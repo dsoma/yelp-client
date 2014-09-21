@@ -1,15 +1,13 @@
 //
-//  AppModel.h
+//  ListItemViewCell.h
 //  yelpClient
 //
 //  Created by Deepak Somashekhara on 9/21/14.
 //  Copyright (c) 2014 Deepak Somashekhara. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
-@interface AppModel : NSObject
-
--(void) searchWithTerm:(NSString*)searchTerm;
+@interface ListItemViewCell : UITableViewCell
 
 @end

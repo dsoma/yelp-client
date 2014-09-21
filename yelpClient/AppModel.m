@@ -29,14 +29,20 @@ NSString * const kYelpTokenSecret       = @"mqtKIxMIR4iBtBPZCmCLEb-Dz3Y";
                                           accessToken:kYelpToken
                                           accessSecret:kYelpTokenSecret];
     
-    [self.yelpClient searchWithTerm:@"Thai"
-                     success:^(AFHTTPRequestOperation *operation, id response) {
-                            NSLog(@"response: %@", response);
-                     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                         NSLog(@"error: %@", [error description]);
-                     }];
-    
     return self;
+}
+
+-(void) searchWithTerm:(NSString *)searchTerm
+{
+    if (searchTerm == nil || ![searchTerm length])
+        return;
+    
+    [self.yelpClient searchWithTerm:searchTerm
+                            success:^(AFHTTPRequestOperation *operation, id response) {
+                                NSLog(@"response: %@", response);
+                            } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                                NSLog(@"error: %@", [error description]);
+                            }];
 }
 
 @end
