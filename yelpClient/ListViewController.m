@@ -7,8 +7,11 @@
 //
 
 #import "ListViewController.h"
+#import "AppModel.h"
 
 @interface ListViewController ()
+
+@property (strong, nonatomic) AppModel* model;
 
 @end
 
@@ -17,9 +20,11 @@
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    
     if (self) {
-        // Custom initialization
+        self.model = [[AppModel alloc] init];
     }
+    
     return self;
 }
 
