@@ -9,6 +9,7 @@
 #import "ListViewController.h"
 #import "AppModel.h"
 #import "ListItemViewCell.h"
+#import "UIImageView+AFNetworking.h"
 
 static NSString *cellIdentifier = @"ListItemViewCellId";
 
@@ -40,7 +41,7 @@ static NSString *cellIdentifier = @"ListItemViewCellId";
     self.tableView.delegate   = self;
     self.tableView.dataSource = self;
     //self.tableView.rowHeight  = 130; //UITableViewAutomaticDimension;
-    self.tableView.estimatedRowHeight = 130;
+    self.tableView.estimatedRowHeight = 105;
     
     [self.tableView registerNib:[UINib nibWithNibName:@"ListItemViewCell" bundle:nil] forCellReuseIdentifier:cellIdentifier];
     
@@ -107,15 +108,15 @@ static NSString *cellIdentifier = @"ListItemViewCellId";
     NSDictionary* item = [self.model getBusinessItem:rowIndex];
     if (item) {
         itemCell.itemTitleLabel.text = [NSString stringWithFormat:@"%d. %@", rowIndex + 1, item[@"name"]];
-        itemCell.itemStarsLabel.text = [NSString stringWithFormat:@"%@ stars", item[@"rating"]];
         itemCell.itemReviewCountLabel.text = [NSString stringWithFormat:@"%@ Reviews", item[@"review_count"]];
         itemCell.itemAddressLabel.text = [self.model getBusinessItemAddress:rowIndex];
         itemCell.itemCategoriesLabel.text = [self.model getCategoryListString:rowIndex];
+        NSURL* ratingsImgUrl = [[NSURL alloc] initWithString:[self.model getRatingImageUrlString:rowIndex]];
+        [itemCell.itemStarsImageView setImageWithURL:ratingsImgUrl placeholderImage:[UIImage imageNamed:@"stars_4_half.png"]];
     }
     
     // Test Stub
     /*self.prototypeCell.itemTitleLabel.text = @"This is a restaurant with a very long name in the beautiful city of San Francisco";
-     self.prototypeCell.itemStarsLabel.text = @"Four stars is good";
      self.prototypeCell.itemReviewCountLabel.text = @"10000 Reviews";
      self.prototypeCell.itemAddressLabel.text = @"Street Num, Then the streen name, then the unit number, city and pin code";
      self.prototypeCell.itemCategoriesLabel.text = @"Category1, Category2, Category3, Category4, Category5, Category6, Category7";*/

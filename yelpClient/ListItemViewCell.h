@@ -12,7 +12,7 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *itemTitleLabel;
 
-@property (weak, nonatomic) IBOutlet UILabel *itemStarsLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *itemStarsImageView;
 
 @property (weak, nonatomic) IBOutlet UILabel *itemReviewCountLabel;
 

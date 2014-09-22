@@ -98,6 +98,16 @@ NSString * const kYelpTokenSecret       = @"mqtKIxMIR4iBtBPZCmCLEb-Dz3Y";
     return nil;
 }
 
+-(NSString*) getRatingImageUrlString:(int)itemIndex
+{
+    NSDictionary* item = [self getBusinessItem:itemIndex];
+    if (item) {
+        return [item valueForKey:@"rating_img_url"];
+    }
+    
+    return nil;
+}
+
 -(NSArray*) getCategories:(int)itemIndex
 {
     NSDictionary* item = [self getBusinessItem:itemIndex];
