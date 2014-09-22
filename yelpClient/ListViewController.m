@@ -92,6 +92,7 @@ static NSString *cellIdentifier = @"ListItemViewCellId";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 // From AppModelObserver
