@@ -25,5 +25,6 @@
 -(NSString*) getBusinessItemAddress:(int)itemIndex;
 -(NSString*) getCategoryListString:(int)itemIndex;
 -(NSString*) getRatingImageUrlString:(int)itemIndex;
+-(NSString*) getItemImageUrlString:(int)itemIndex;
 
 @end

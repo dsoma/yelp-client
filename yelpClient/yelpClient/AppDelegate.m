@@ -17,6 +17,7 @@
     
     ListViewController* listViewController = [[ListViewController alloc] init];
     self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:listViewController];
+    [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:(196.0f/255) green:(18.0f/255) blue:0 alpha:1]];
     
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];

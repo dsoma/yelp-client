@@ -10,6 +10,8 @@
 
 @interface ListItemViewCell : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet UIImageView *itemImageView;
+
 @property (weak, nonatomic) IBOutlet UILabel *itemTitleLabel;
 
 @property (weak, nonatomic) IBOutlet UIImageView *itemStarsImageView;

@@ -10,6 +10,7 @@
 #import "AppModel.h"
 #import "ListItemViewCell.h"
 #import "UIImageView+AFNetworking.h"
+#import <QuartzCore/QuartzCore.h>
 
 static NSString *cellIdentifier = @"ListItemViewCellId";
 
@@ -111,6 +112,12 @@ static NSString *cellIdentifier = @"ListItemViewCellId";
         itemCell.itemReviewCountLabel.text = [NSString stringWithFormat:@"%@ Reviews", item[@"review_count"]];
         itemCell.itemAddressLabel.text = [self.model getBusinessItemAddress:rowIndex];
         itemCell.itemCategoriesLabel.text = [self.model getCategoryListString:rowIndex];
+        
+        NSURL* thumbnailUrl = [[NSURL alloc] initWithString:[self.model getItemImageUrlString:rowIndex]];
+        [itemCell.itemImageView setImageWithURL:thumbnailUrl placeholderImage:nil];
+        itemCell.itemImageView.layer.cornerRadius = 5.0f;
+        itemCell.itemImageView.clipsToBounds = YES;
+        
         NSURL* ratingsImgUrl = [[NSURL alloc] initWithString:[self.model getRatingImageUrlString:rowIndex]];
         [itemCell.itemStarsImageView setImageWithURL:ratingsImgUrl placeholderImage:[UIImage imageNamed:@"stars_4_half.png"]];
     }
