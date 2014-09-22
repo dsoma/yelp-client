@@ -16,6 +16,7 @@ static NSString *cellIdentifier = @"ListItemViewCellId";
 
 @property (strong, nonatomic) AppModel* model;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (nonatomic, strong) ListItemViewCell *prototypeCell;
 
 @end
 
@@ -38,7 +39,8 @@ static NSString *cellIdentifier = @"ListItemViewCellId";
 {
     self.tableView.delegate   = self;
     self.tableView.dataSource = self;
-    self.tableView.rowHeight  = 130;
+    //self.tableView.rowHeight  = 130; //UITableViewAutomaticDimension;
+    self.tableView.estimatedRowHeight = 130;
     
     [self.tableView registerNib:[UINib nibWithNibName:@"ListItemViewCell" bundle:nil] forCellReuseIdentifier:cellIdentifier];
     
@@ -76,16 +78,47 @@ static NSString *cellIdentifier = @"ListItemViewCellId";
     
     int rowIndex = indexPath.row;
     
-    NSDictionary* item = [self.model getBusinessItem:rowIndex];
-    if (item) {
-        cell.itemTitleLabel.text = [NSString stringWithFormat:@"%d. %@", rowIndex + 1, item[@"name"]];
-        cell.itemStarsLabel.text = [NSString stringWithFormat:@"%@ stars", item[@"rating"]];
-        cell.itemReviewCountLabel.text = [NSString stringWithFormat:@"%@ Reviews", item[@"review_count"]];
-        cell.itemAddressLabel.text = [self.model getBusinessItemAddress:rowIndex];
-        cell.itemCategoriesLabel.text = [self.model getCategoryListString:rowIndex];
-    }
+    [self configureCell:cell index:rowIndex];
     
     return cell;
+}
+
+
+-(CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if(!self.prototypeCell)
+    {
+        self.prototypeCell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    }
+    
+    [self configureCell:self.prototypeCell index:indexPath.row];
+    
+    self.prototypeCell.bounds = CGRectMake(0.0f, 0.0f, CGRectGetWidth(tableView.bounds), CGRectGetHeight(self.prototypeCell.bounds));
+    
+    [self.prototypeCell setNeedsLayout];
+    [self.prototypeCell layoutIfNeeded];
+    
+    CGSize size = [self.prototypeCell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
+    return size.height + 1.0f;
+}
+
+-(void) configureCell:(ListItemViewCell*)itemCell index:(int)rowIndex
+{
+    NSDictionary* item = [self.model getBusinessItem:rowIndex];
+    if (item) {
+        itemCell.itemTitleLabel.text = [NSString stringWithFormat:@"%d. %@", rowIndex + 1, item[@"name"]];
+        itemCell.itemStarsLabel.text = [NSString stringWithFormat:@"%@ stars", item[@"rating"]];
+        itemCell.itemReviewCountLabel.text = [NSString stringWithFormat:@"%@ Reviews", item[@"review_count"]];
+        itemCell.itemAddressLabel.text = [self.model getBusinessItemAddress:rowIndex];
+        itemCell.itemCategoriesLabel.text = [self.model getCategoryListString:rowIndex];
+    }
+    
+    // Test Stub
+    /*self.prototypeCell.itemTitleLabel.text = @"This is a restaurant with a very long name in the beautiful city of San Francisco";
+     self.prototypeCell.itemStarsLabel.text = @"Four stars is good";
+     self.prototypeCell.itemReviewCountLabel.text = @"10000 Reviews";
+     self.prototypeCell.itemAddressLabel.text = @"Street Num, Then the streen name, then the unit number, city and pin code";
+     self.prototypeCell.itemCategoriesLabel.text = @"Category1, Category2, Category3, Category4, Category5, Category6, Category7";*/
 }
 
 // From UITableViewDelegate
