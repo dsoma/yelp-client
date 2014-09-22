@@ -15,7 +15,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="1cb-L0-YdL">
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="1cb-L0-YdL">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -23,8 +23,10 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="1cb-L0-YdL" secondAttribute="trailing" id="0o5-Ln-ZND"/>
-                <constraint firstItem="1cb-L0-YdL" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="G4a-1j-IyK"/>
+                <constraint firstItem="1cb-L0-YdL" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="LE7-0j-g5M"/>
+                <constraint firstAttribute="bottom" secondItem="1cb-L0-YdL" secondAttribute="bottom" id="bU9-6v-dQ7"/>
+                <constraint firstItem="1cb-L0-YdL" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="gtu-qX-FXL"/>
+                <constraint firstAttribute="trailing" secondItem="1cb-L0-YdL" secondAttribute="trailing" id="r0S-FL-ULH"/>
             </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <simulatedNavigationBarMetrics key="simulatedTopBarMetrics"/>

@@ -48,7 +48,7 @@ static NSString *cellIdentifier = @"ListItemViewCellId";
     
     [super viewDidLoad];
     
-    [self.model searchWithTerm:@"Indian"];
+    [self.model searchWithTerm:@"Thai"];
 }
 
 - (void)didReceiveMemoryWarning
@@ -107,6 +107,23 @@ static NSString *cellIdentifier = @"ListItemViewCellId";
 -(void) configureCell:(ListItemViewCell*)itemCell index:(int)rowIndex
 {
     NSDictionary* item = [self.model getBusinessItem:rowIndex];
+    
+    /*if(rowIndex == 0) {
+        itemCell.itemTitleLabel.text = @"This is a restaurant with a very long name in the beautiful city of San Francisco";
+        itemCell.itemReviewCountLabel.text = @"10000 Reviews";
+        itemCell.itemAddressLabel.text = @"Street Num, Then the streen name, then the unit number, city and pin code";
+        itemCell.itemCategoriesLabel.text = @"Category1, Category2, Category3, Category4, Category5, Category6, Category7";
+        
+        NSURL* thumbnailUrl = [[NSURL alloc] initWithString:[self.model getItemImageUrlString:rowIndex]];
+        [itemCell.itemImageView setImageWithURL:thumbnailUrl placeholderImage:nil];
+        itemCell.itemImageView.layer.cornerRadius = 5.0f;
+        itemCell.itemImageView.clipsToBounds = YES;
+        
+        NSURL* ratingsImgUrl = [[NSURL alloc] initWithString:[self.model getRatingImageUrlString:rowIndex]];
+        [itemCell.itemStarsImageView setImageWithURL:ratingsImgUrl placeholderImage:[UIImage imageNamed:@"stars_4_half.png"]];
+        return;
+    }*/
+    
     if (item) {
         itemCell.itemTitleLabel.text = [NSString stringWithFormat:@"%d. %@", rowIndex + 1, item[@"name"]];
         itemCell.itemReviewCountLabel.text = [NSString stringWithFormat:@"%@ Reviews", item[@"review_count"]];
@@ -121,12 +138,6 @@ static NSString *cellIdentifier = @"ListItemViewCellId";
         NSURL* ratingsImgUrl = [[NSURL alloc] initWithString:[self.model getRatingImageUrlString:rowIndex]];
         [itemCell.itemStarsImageView setImageWithURL:ratingsImgUrl placeholderImage:[UIImage imageNamed:@"stars_4_half.png"]];
     }
-    
-    // Test Stub
-    /*self.prototypeCell.itemTitleLabel.text = @"This is a restaurant with a very long name in the beautiful city of San Francisco";
-     self.prototypeCell.itemReviewCountLabel.text = @"10000 Reviews";
-     self.prototypeCell.itemAddressLabel.text = @"Street Num, Then the streen name, then the unit number, city and pin code";
-     self.prototypeCell.itemCategoriesLabel.text = @"Category1, Category2, Category3, Category4, Category5, Category6, Category7";*/
 }
 
 // From UITableViewDelegate
