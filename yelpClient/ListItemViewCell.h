@@ -10,4 +10,16 @@
 
 @interface ListItemViewCell : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet UILabel *itemTitleLabel;
+
+@property (weak, nonatomic) IBOutlet UILabel *itemStarsLabel;
+
+@property (weak, nonatomic) IBOutlet UILabel *itemReviewCountLabel;
+
+@property (weak, nonatomic) IBOutlet UILabel *itemAddressLabel;
+
+@property (weak, nonatomic) IBOutlet UILabel *itemCategoriesLabel;
+
+-(void) setItemTitle:(NSString*)itemTitle;
+
 @end

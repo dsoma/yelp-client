@@ -8,8 +8,21 @@
 
 #import <Foundation/Foundation.h>
 
+@protocol AppModelObserver
+
+-(void)searchResultsLoaded;
+-(void)searchFailed:(NSError*)error;
+
+@end
+
 @interface AppModel : NSObject
 
+@property (weak, nonatomic) id <AppModelObserver> observer;
+
 -(void) searchWithTerm:(NSString*)searchTerm;
+-(int)  getResultCount;
+-(NSDictionary*) getBusinessItem:(int)itemIndex;
+-(NSString*) getBusinessItemAddress:(int)itemIndex;
+-(NSString*) getCategoryListString:(int)itemIndex;
 
 @end

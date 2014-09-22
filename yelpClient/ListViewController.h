@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AppModel.h"
 
-@interface ListViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@interface ListViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, AppModelObserver>
 
 @end

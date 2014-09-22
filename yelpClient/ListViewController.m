@@ -27,6 +27,7 @@ static NSString *cellIdentifier = @"ListItemViewCellId";
     
     if (self) {
         self.model = [[AppModel alloc] init];
+        self.model.observer = self;
         self.title = @"Results";
     }
     
@@ -37,6 +38,7 @@ static NSString *cellIdentifier = @"ListItemViewCellId";
 {
     self.tableView.delegate   = self;
     self.tableView.dataSource = self;
+    self.tableView.rowHeight  = 130;
     
     [self.tableView registerNib:[UINib nibWithNibName:@"ListItemViewCell" bundle:nil] forCellReuseIdentifier:cellIdentifier];
     
@@ -59,7 +61,7 @@ static NSString *cellIdentifier = @"ListItemViewCellId";
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if (self.model != nil) {
-        return 1;
+        return [self.model getResultCount];
     }
     return 0;
 }
@@ -74,6 +76,15 @@ static NSString *cellIdentifier = @"ListItemViewCellId";
     
     int rowIndex = indexPath.row;
     
+    NSDictionary* item = [self.model getBusinessItem:rowIndex];
+    if (item) {
+        cell.itemTitleLabel.text = [NSString stringWithFormat:@"%d. %@", rowIndex + 1, item[@"name"]];
+        cell.itemStarsLabel.text = [NSString stringWithFormat:@"%@ stars", item[@"rating"]];
+        cell.itemReviewCountLabel.text = [NSString stringWithFormat:@"%@ Reviews", item[@"review_count"]];
+        cell.itemAddressLabel.text = [self.model getBusinessItemAddress:rowIndex];
+        cell.itemCategoriesLabel.text = [self.model getCategoryListString:rowIndex];
+    }
+    
     return cell;
 }
 
@@ -82,5 +93,18 @@ static NSString *cellIdentifier = @"ListItemViewCellId";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
 }
+
+// From AppModelObserver
+
+-(void)searchResultsLoaded
+{
+    [self.tableView reloadData];
+}
+
+-(void)searchFailed:(NSError*)error
+{
+    
+}
+
 
 @end

@@ -8,6 +8,12 @@
 
 #import "ListItemViewCell.h"
 
+@interface ListItemViewCell ()
+
+
+
+@end
+
 @implementation ListItemViewCell
 
 - (void)awakeFromNib
@@ -20,6 +26,11 @@
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
+}
+
+-(void) setItemTitle:(NSString*)itemTitle
+{
+    self.itemTitleLabel.text = itemTitle;
 }
 
 @end
