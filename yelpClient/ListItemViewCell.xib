@@ -109,6 +109,7 @@
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.96855041058394165" alpha="1" colorSpace="calibratedWhite"/>
             <connections>
+                <outlet property="distanceLabel" destination="vGh-Wy-etN" id="OXL-fc-DNK"/>
                 <outlet property="itemAddressLabel" destination="tnY-Ce-ZEE" id="xWS-tM-1t2"/>
                 <outlet property="itemCategoriesLabel" destination="SwI-rk-kFv" id="Ni9-qS-2KT"/>
                 <outlet property="itemImageView" destination="IJH-UH-lPi" id="wNJ-ws-XGf"/>

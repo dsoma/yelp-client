@@ -134,6 +134,7 @@ static NSString *cellIdentifier = @"ListItemViewCellId";
         itemCell.itemReviewCountLabel.text = [NSString stringWithFormat:@"%@ Reviews", item[@"review_count"]];
         itemCell.itemAddressLabel.text = [self.model getBusinessItemAddress:rowIndex];
         itemCell.itemCategoriesLabel.text = [self.model getCategoryListString:rowIndex];
+        itemCell.distanceLabel.text = [NSString stringWithFormat:@"%.2f mi", [self.model getDistanceInMiles:rowIndex]];
         
         NSString* itemImageUrlString = [self.model getItemImageUrlString:rowIndex];
         NSURL* thumbnailUrl = (itemImageUrlString) ? [[NSURL alloc] initWithString:itemImageUrlString] : nil;

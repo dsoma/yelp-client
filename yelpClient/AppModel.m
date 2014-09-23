@@ -41,7 +41,7 @@ NSString * const kYelpTokenSecret       = @"mqtKIxMIR4iBtBPZCmCLEb-Dz3Y";
     [self.yelpClient searchWithTerm:searchTerm
      
     success: ^(AFHTTPRequestOperation *operation, id response) {
-        NSLog(@"response: %@", response[@"businesses"]);
+        NSLog(@"response: %@", response);
         
         self.resultItems = response[@"businesses"];
         
@@ -86,6 +86,18 @@ NSString * const kYelpTokenSecret       = @"mqtKIxMIR4iBtBPZCmCLEb-Dz3Y";
     }
     
     return nil;
+}
+
+-(float) getDistanceInMiles:(int)itemIndex
+{
+    NSDictionary* item = [self getBusinessItem:itemIndex];
+    if (item) {
+        NSString* meters = [item valueForKey:@"distance"];
+        float metersValue = meters.floatValue;
+        return metersValue * 0.000621371;
+    }
+    
+    return 0;
 }
 
 -(NSString*) getCategoryListString:(int)itemIndex

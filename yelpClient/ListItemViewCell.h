@@ -22,6 +22,8 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *itemCategoriesLabel;
 
+@property (weak, nonatomic) IBOutlet UILabel *distanceLabel;
+
 -(void) setItemTitle:(NSString*)itemTitle;
 
 @end

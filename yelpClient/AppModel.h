@@ -26,5 +26,6 @@
 -(NSString*) getCategoryListString:(int)itemIndex;
 -(NSString*) getRatingImageUrlString:(int)itemIndex;
 -(NSString*) getItemImageUrlString:(int)itemIndex;
+-(float) getDistanceInMiles:(int)itemIndex;
 
 @end

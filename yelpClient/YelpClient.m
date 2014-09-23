@@ -34,7 +34,7 @@ NSString* yelpAPIbaseUrlString = @"http://api.yelp.com/v2/";
 {
     // For additional parameters, see http://www.yelp.com/developers/documentation/v2/search_api
     
-    NSDictionary *parameters = @{@"term": term, @"location" : @"San Francisco"};
+    NSDictionary *parameters = @{@"term": term,  @"ll" : @"37.7900274,-122.4053277" };
     
     return [self GET:@"search" parameters:parameters success:success failure:failure];
 }
