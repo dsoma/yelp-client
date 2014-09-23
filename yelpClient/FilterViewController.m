@@ -7,9 +7,9 @@
 //
 
 #import "FilterViewController.h"
-#import "PriceViewCell.h"
+#import "SwitchFilterViewCell.h"
 
-static NSString *filterViewCellId = @"FilterViewCellId";
+static NSString *switchFilterCellId = @"SwitchFilterCellId";
 
 @interface FilterViewController ()
 
@@ -35,7 +35,9 @@ static NSString *filterViewCellId = @"FilterViewCellId";
     self.tableView.delegate   = self;
     self.tableView.dataSource = self;
     
-    [self.tableView registerNib:[UINib nibWithNibName:@"PriceViewCell" bundle:nil] forCellReuseIdentifier:filterViewCellId];
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    
+    [self.tableView registerNib:[UINib nibWithNibName:@"SwitchFilterViewCell" bundle:nil] forCellReuseIdentifier:switchFilterCellId];
     
     [super viewDidLoad];
 }
@@ -54,10 +56,10 @@ static NSString *filterViewCellId = @"FilterViewCellId";
 {
     switch (section)
     {
-        case 0: return 5;
+        case 0: return 1;
         case 1: return 5;
-        case 2: return 4;
-        case 3: return 1;
+        case 2: return 5;
+        case 3: return 4;
     }
     
     return 0;
@@ -67,27 +69,40 @@ static NSString *filterViewCellId = @"FilterViewCellId";
 {
     switch (section)
     {
-        case 0: return @"Category";
-        case 1: return @"Distance";
-        case 2: return @"Sort by";
-        case 3: return @"General Features";
+        case 0: return @"General Features";
+        case 1: return @"Category";
+        case 2: return @"Distance";
+        case 3: return @"Sort by";
     }
     return @"Filter";
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    return 30;
+    return 40;
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:filterViewCellId];
+    NSInteger section = indexPath.section;
     
     // Configure the cell...
     
-    return cell;
+    switch (section)
+    {
+        case 0:
+        {
+            SwitchFilterViewCell* sfvCell = [tableView dequeueReusableCellWithIdentifier:switchFilterCellId];
+            if (indexPath.row == 0)
+            {
+                sfvCell.descLabel.text = @"Offering a deal";
+            }
+            return sfvCell;
+        }
+    }
+    
+    return [[UITableViewCell alloc] init];
 }
 
 

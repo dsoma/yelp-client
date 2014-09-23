@@ -1,5 +1,5 @@
 //
-//  PriceViewCell.h
+//  SwitchFilterViewCell.h
 //  yelpClient
 //
 //  Created by Deepak Somashekhara on 9/23/14.
@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PriceViewCell : UITableViewCell
+@interface SwitchFilterViewCell : UITableViewCell
+
+@property (weak, nonatomic) IBOutlet UILabel *descLabel;
 
 @end

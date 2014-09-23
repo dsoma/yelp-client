@@ -1,14 +1,14 @@
 //
-//  PriceViewCell.m
+//  SwitchFilterViewCell.m
 //  yelpClient
 //
 //  Created by Deepak Somashekhara on 9/23/14.
 //  Copyright (c) 2014 Deepak Somashekhara. All rights reserved.
 //
 
-#import "PriceViewCell.h"
+#import "SwitchFilterViewCell.h"
 
-@implementation PriceViewCell
+@implementation SwitchFilterViewCell
 
 - (void)awakeFromNib
 {
