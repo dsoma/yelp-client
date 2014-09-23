@@ -51,9 +51,7 @@ static NSString *cellIdentifier = @"ListItemViewCellId";
     [super viewDidLoad];
     
     [self loadSearchBar];
-    
-    //UIView* filterButton = [[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, 30.0, 44.0)];
-    //self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:filterButton];
+    [self loadFilterButton];
     
     [self.model searchWithTerm:@"Thai"];
 }
@@ -137,7 +135,8 @@ static NSString *cellIdentifier = @"ListItemViewCellId";
         itemCell.itemAddressLabel.text = [self.model getBusinessItemAddress:rowIndex];
         itemCell.itemCategoriesLabel.text = [self.model getCategoryListString:rowIndex];
         
-        NSURL* thumbnailUrl = [[NSURL alloc] initWithString:[self.model getItemImageUrlString:rowIndex]];
+        NSString* itemImageUrlString = [self.model getItemImageUrlString:rowIndex];
+        NSURL* thumbnailUrl = (itemImageUrlString) ? [[NSURL alloc] initWithString:itemImageUrlString] : nil;
         [itemCell.itemImageView setImageWithURL:thumbnailUrl placeholderImage:nil];
         itemCell.itemImageView.layer.cornerRadius = 5.0f;
         itemCell.itemImageView.clipsToBounds = YES;
@@ -199,6 +198,18 @@ static NSString *cellIdentifier = @"ListItemViewCellId";
     self.searchBar.showsCancelButton = YES;
 
     self.navigationItem.titleView = self.searchBar;
+}
+
+-(void) loadFilterButton
+{
+    UIButton* filterButton = [UIButton buttonWithType:UIButtonTypeSystem];
+    [filterButton addTarget:self
+                     action:nil
+           forControlEvents:UIControlEventTouchUpInside];
+    [filterButton setTitle:@"Filters" forState:UIControlStateNormal];
+    filterButton.frame = CGRectMake(0.0, 0.0, 50.0, 40.0);
+    filterButton.tintColor = [UIColor whiteColor];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:filterButton];
 }
 
 // Event listeners
