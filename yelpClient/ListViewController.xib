@@ -22,6 +22,7 @@
                 </tableView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <gestureRecognizers/>
             <constraints>
                 <constraint firstItem="1cb-L0-YdL" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="LE7-0j-g5M"/>
                 <constraint firstAttribute="bottom" secondItem="1cb-L0-YdL" secondAttribute="bottom" id="bU9-6v-dQ7"/>
@@ -31,6 +32,14 @@
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <simulatedNavigationBarMetrics key="simulatedTopBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+            <connections>
+                <outletCollection property="gestureRecognizers" destination="PDK-pz-R0l" appends="YES" id="mFd-Tm-L4w"/>
+            </connections>
         </view>
+        <tapGestureRecognizer id="PDK-pz-R0l">
+            <connections>
+                <action selector="onTap:" destination="-1" id="P7u-LT-wEA"/>
+            </connections>
+        </tapGestureRecognizer>
     </objects>
 </document>

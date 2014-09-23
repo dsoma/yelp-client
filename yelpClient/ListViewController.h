@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "AppModel.h"
 
-@interface ListViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, AppModelObserver>
+@interface ListViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, AppModelObserver, UISearchBarDelegate>
 
 @end

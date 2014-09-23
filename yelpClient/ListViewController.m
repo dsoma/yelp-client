@@ -21,6 +21,8 @@ static NSString *cellIdentifier = @"ListItemViewCellId";
 @property (nonatomic, strong) ListItemViewCell *prototypeCell;
 @property (nonatomic, strong) UISearchBar *searchBar;
 
+- (IBAction)onTap:(id)sender;
+
 @end
 
 @implementation ListViewController
@@ -48,14 +50,7 @@ static NSString *cellIdentifier = @"ListItemViewCellId";
     
     [super viewDidLoad];
     
-    self.searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0.0, 0.0, 200.0, 40.0)];
-    self.searchBar.placeholder = @"Search";
-    self.searchBar.userInteractionEnabled=YES;
-    //self.searchBar.delegate = self;
-    [self.searchBar setBarTintColor:[UIColor colorWithRed:(196.0f/255) green:(18.0f/255) blue:0 alpha:1]];
-    [self.searchBar setTranslucent:YES];
-    
-    self.navigationItem.titleView = self.searchBar;
+    [self loadSearchBar];
     
     //UIView* filterButton = [[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, 30.0, 44.0)];
     //self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:filterButton];
@@ -168,8 +163,51 @@ static NSString *cellIdentifier = @"ListItemViewCellId";
 
 -(void)searchFailed:(NSError*)error
 {
-    
+    // TODO: Handle errors
 }
 
+// From UISearchBarDelegate
 
+-(void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
+{
+    if (searchBar)
+    {
+        [searchBar endEditing:YES];
+    }
+}
+
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
+{
+    if (searchBar)
+    {
+        [searchBar endEditing:YES];
+        NSString* searchTerm = [searchBar text];
+        [self.model searchWithTerm:searchTerm];
+    }
+}
+
+// Search Bar
+-(void) loadSearchBar
+{
+    self.searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0.0, 0.0, 200.0, 40.0)];
+    self.searchBar.placeholder = @"Search";
+    self.searchBar.userInteractionEnabled=YES;
+    self.searchBar.delegate = self;
+    self.searchBar.barTintColor = [UIColor colorWithRed:(196.0f/255) green:(18.0f/255) blue:0 alpha:1];
+    self.searchBar.translucent = YES;
+    self.searchBar.tintColor = [UIColor whiteColor];
+    self.searchBar.showsCancelButton = YES;
+
+    self.navigationItem.titleView = self.searchBar;
+}
+
+// Event listeners
+
+- (IBAction)onTap:(id)sender
+{
+    if(self.searchBar)
+    {
+        [self.searchBar endEditing:YES];
+    }
+}
 @end
