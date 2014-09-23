@@ -11,6 +11,7 @@
 #import "ListItemViewCell.h"
 #import "UIImageView+AFNetworking.h"
 #import <QuartzCore/QuartzCore.h>
+#import "FilterViewController.h"
 
 static NSString *cellIdentifier = @"ListItemViewCellId";
 
@@ -22,6 +23,7 @@ static NSString *cellIdentifier = @"ListItemViewCellId";
 @property (nonatomic, strong) UISearchBar *searchBar;
 
 - (IBAction)onTap:(id)sender;
+-(void)onFilterButtonTapped;
 
 @end
 
@@ -152,6 +154,9 @@ static NSString *cellIdentifier = @"ListItemViewCellId";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    FilterViewController* filterViewController = [[FilterViewController alloc] init];
+    [self.navigationController pushViewController:filterViewController animated:YES];
 }
 
 // From AppModelObserver
@@ -205,7 +210,7 @@ static NSString *cellIdentifier = @"ListItemViewCellId";
 {
     UIButton* filterButton = [UIButton buttonWithType:UIButtonTypeSystem];
     [filterButton addTarget:self
-                     action:nil
+                     action:@selector(onFilterButtonTapped)
            forControlEvents:UIControlEventTouchUpInside];
     [filterButton setTitle:@"Filters" forState:UIControlStateNormal];
     filterButton.frame = CGRectMake(0.0, 0.0, 50.0, 40.0);
@@ -214,6 +219,12 @@ static NSString *cellIdentifier = @"ListItemViewCellId";
 }
 
 // Event listeners
+
+-(void)onFilterButtonTapped
+{
+    FilterViewController* filterViewController = [[FilterViewController alloc] init];
+    [self.navigationController pushViewController:filterViewController animated:YES];
+}
 
 - (IBAction)onTap:(id)sender
 {

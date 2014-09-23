@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7F16A3FC19D1B4010003BD18 /* FilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F16A3FA19D1B4010003BD18 /* FilterViewController.m */; };
+		7F16A3FD19D1B4010003BD18 /* FilterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7F16A3FB19D1B4010003BD18 /* FilterViewController.xib */; };
+		7F16A40119D1BF170003BD18 /* PriceViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F16A3FF19D1BF170003BD18 /* PriceViewCell.m */; };
+		7F16A40219D1BF170003BD18 /* PriceViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7F16A40019D1BF170003BD18 /* PriceViewCell.xib */; };
 		7FC60B3319CF6BAE005CE3ED /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FC60B3219CF6BAE005CE3ED /* Foundation.framework */; };
 		7FC60B3519CF6BAE005CE3ED /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FC60B3419CF6BAE005CE3ED /* CoreGraphics.framework */; };
 		7FC60B3719CF6BAE005CE3ED /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FC60B3619CF6BAE005CE3ED /* UIKit.framework */; };
@@ -41,6 +45,12 @@
 
 /* Begin PBXFileReference section */
 		7E448B1440B849DC8D5CAF98 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		7F16A3F919D1B4010003BD18 /* FilterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilterViewController.h; sourceTree = "<group>"; };
+		7F16A3FA19D1B4010003BD18 /* FilterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilterViewController.m; sourceTree = "<group>"; };
+		7F16A3FB19D1B4010003BD18 /* FilterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FilterViewController.xib; sourceTree = "<group>"; };
+		7F16A3FE19D1BF170003BD18 /* PriceViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PriceViewCell.h; sourceTree = "<group>"; };
+		7F16A3FF19D1BF170003BD18 /* PriceViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PriceViewCell.m; sourceTree = "<group>"; };
+		7F16A40019D1BF170003BD18 /* PriceViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PriceViewCell.xib; sourceTree = "<group>"; };
 		7FC60B2F19CF6BAE005CE3ED /* yelpClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = yelpClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7FC60B3219CF6BAE005CE3ED /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		7FC60B3419CF6BAE005CE3ED /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -178,6 +188,9 @@
 				7FC60B6419CF6DC6005CE3ED /* ListViewController.h */,
 				7FC60B6519CF6DC6005CE3ED /* ListViewController.m */,
 				7FC60B6619CF6DC6005CE3ED /* ListViewController.xib */,
+				7F16A3F919D1B4010003BD18 /* FilterViewController.h */,
+				7F16A3FA19D1B4010003BD18 /* FilterViewController.m */,
+				7F16A3FB19D1B4010003BD18 /* FilterViewController.xib */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -188,6 +201,9 @@
 				7FEC6B1119CF8F5600770A42 /* ListItemViewCell.h */,
 				7FEC6B1219CF8F5600770A42 /* ListItemViewCell.m */,
 				7FEC6B1319CF8F5600770A42 /* ListItemViewCell.xib */,
+				7F16A3FE19D1BF170003BD18 /* PriceViewCell.h */,
+				7F16A3FF19D1BF170003BD18 /* PriceViewCell.m */,
+				7F16A40019D1BF170003BD18 /* PriceViewCell.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -284,6 +300,8 @@
 				7FEC6B1719D019CF00770A42 /* stars_4_half.png in Resources */,
 				7FC60B4519CF6BAE005CE3ED /* Images.xcassets in Resources */,
 				7FC60B6819CF6DC6005CE3ED /* ListViewController.xib in Resources */,
+				7F16A3FD19D1B4010003BD18 /* FilterViewController.xib in Resources */,
+				7F16A40219D1BF170003BD18 /* PriceViewCell.xib in Resources */,
 				7FEC6B1519CF8F5600770A42 /* ListItemViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -336,10 +354,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7F16A40119D1BF170003BD18 /* PriceViewCell.m in Sources */,
 				7FC60B6B19CF701C005CE3ED /* YelpClient.m in Sources */,
 				7FEC6B1419CF8F5600770A42 /* ListItemViewCell.m in Sources */,
 				7FC60B4319CF6BAE005CE3ED /* AppDelegate.m in Sources */,
 				7FEC6B1019CF76EB00770A42 /* AppModel.m in Sources */,
+				7F16A3FC19D1B4010003BD18 /* FilterViewController.m in Sources */,
 				7FC60B3F19CF6BAE005CE3ED /* main.m in Sources */,
 				7FC60B6719CF6DC6005CE3ED /* ListViewController.m in Sources */,
 			);
