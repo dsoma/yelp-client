@@ -19,6 +19,7 @@ static NSString *cellIdentifier = @"ListItemViewCellId";
 @property (strong, nonatomic) AppModel* model;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) ListItemViewCell *prototypeCell;
+@property (nonatomic, strong) UISearchBar *searchBar;
 
 @end
 
@@ -31,7 +32,6 @@ static NSString *cellIdentifier = @"ListItemViewCellId";
     if (self) {
         self.model = [[AppModel alloc] init];
         self.model.observer = self;
-        self.title = @"Results";
     }
     
     return self;
@@ -47,6 +47,18 @@ static NSString *cellIdentifier = @"ListItemViewCellId";
     [self.tableView registerNib:[UINib nibWithNibName:@"ListItemViewCell" bundle:nil] forCellReuseIdentifier:cellIdentifier];
     
     [super viewDidLoad];
+    
+    self.searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0.0, 0.0, 200.0, 40.0)];
+    self.searchBar.placeholder = @"Search";
+    self.searchBar.userInteractionEnabled=YES;
+    //self.searchBar.delegate = self;
+    [self.searchBar setBarTintColor:[UIColor colorWithRed:(196.0f/255) green:(18.0f/255) blue:0 alpha:1]];
+    [self.searchBar setTranslucent:YES];
+    
+    self.navigationItem.titleView = self.searchBar;
+    
+    //UIView* filterButton = [[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, 30.0, 44.0)];
+    //self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:filterButton];
     
     [self.model searchWithTerm:@"Thai"];
 }

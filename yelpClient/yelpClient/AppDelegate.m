@@ -16,8 +16,12 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
     ListViewController* listViewController = [[ListViewController alloc] init];
-    self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:listViewController];
+    
+    UINavigationController* navController = [[UINavigationController alloc] initWithRootViewController:listViewController];
+    
+    self.window.rootViewController = navController;
     [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:(196.0f/255) green:(18.0f/255) blue:0 alpha:1]];
+
     
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
